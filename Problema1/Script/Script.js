@@ -6,4 +6,4 @@ document.getElementById("comparasion").addEventListener("submit", function (even
   const region1 = formData.get('region1');
   const region2 = formData.get('region2');
   
-}
+});
