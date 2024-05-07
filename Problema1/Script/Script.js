@@ -6,7 +6,7 @@ document.getElementById("comparasion").addEventListener("submit", function (even
   const region1 = formData.get('region1');
   const region2 = formData.get('region2');
   
-  fetch("http://localhost/Ajax/JASON/data.json")
+  fetch("http://localhost/Ajax/JSON/data.json")
     .then(response => response.json())
     .then(data => {
       //Solicitando informacion del archivo data.json 
@@ -53,4 +53,5 @@ document.getElementById("comparasion").addEventListener("submit", function (even
         });
       }
     })
+    .catch(error => console.error('Error:', error));
 });
