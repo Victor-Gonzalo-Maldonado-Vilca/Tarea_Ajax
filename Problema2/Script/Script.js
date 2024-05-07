@@ -15,5 +15,26 @@ document.getElementById("comparasion").addEventListener("submit", function (even
 
       // Obtener las fechas de la primera región
       const fechas = primeraRegion.confirmed.map(entry => entry.date);
+
+      // Extraer datos  de las regiones menos Lima y Callao
+      const datasets = data.filter(region => region.region !== 'Lima' && region.region !== 'Callao').map(region => {
+        const valores = [];
+        // Llenar los valores con los datos correspondientes a las fechas de la primera región
+        fechas.forEach(fecha => {
+          const dato = region.confirmed.find(entry => entry.date === fecha);
+          if (dato) {
+            valores.push(parseInt(dato.value));
+          } else {
+            valores.push(null);
+          }
+        });
+        return {
+          label: region.region,
+          data: valores,
+          borderColor: getRandomColor(),
+          backgroundColor: 'rgba(0, 0, 255, 0.1)'
+        };
+      });
+
     })
 });
